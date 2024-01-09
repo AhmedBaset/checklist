@@ -1,21 +1,27 @@
-name: Checkbox Trigger
+name: checklist
 description: Detect and update checkboxes in PR description
-author: karlderkaefer
+author: Ahmed Abdelbaset
+
+branding:
+  icon: check-square
+  color: blue
+
 inputs:
-  github-token:
+  token:
     description: GitHub token
     required: true
-  action:
-    description: Action to perform (detect, check, uncheck)
-    required: true
-  checkbox:
-    description: Comma separated list of checkboxes to check or uncheck
+  template:
+    description: |
+      PR description template to append when no checkboxes are found in the PR description.
+      Leave this field empty to disable the feature.
     required: false
+
 outputs:
   checked:
     description: Checked checkboxes
   unchecked:
     description: Unchecked checkboxes
+
 runs:
   using: node16
   main: dist/index.js
