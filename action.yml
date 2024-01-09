@@ -1,0 +1,21 @@
+name: Checkbox Trigger
+description: Detect and update checkboxes in PR description
+author: karlderkaefer
+inputs:
+  github-token:
+    description: GitHub token
+    required: true
+  action:
+    description: Action to perform (detect, check, uncheck)
+    required: true
+  checkbox:
+    description: Comma separated list of checkboxes to check or uncheck
+    required: false
+outputs:
+  checked:
+    description: Checked checkboxes
+  unchecked:
+    description: Unchecked checkboxes
+runs:
+  using: node16
+  main: dist/index.js
