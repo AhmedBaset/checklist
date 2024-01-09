@@ -1,5 +1,5 @@
-import gh from "@actions/github";
-import core from "@actions/core";
+import * as gh from "@actions/github";
+import * as core from "@actions/core";
 
 try {
   main();
