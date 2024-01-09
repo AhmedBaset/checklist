@@ -1,4 +1,4 @@
-name: checklist
+name: gh-checklist
 description: Detect and update checkboxes in PR description
 author: Ahmed Abdelbaset
 
