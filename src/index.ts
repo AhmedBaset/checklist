@@ -20,7 +20,7 @@ async function main() {
     return;
   }
 
-  let prDescription = pr.body;
+  let prDescription = pr.body ?? "";
 
   const checked: string[] = [];
   const unchecked: string[] = [];
