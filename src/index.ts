@@ -15,8 +15,8 @@ async function main() {
   const context = gh.context;
   const pr = context.payload.pull_request;
 
-  if (!pr || !pr.body) {
-    core.warning("No pull request body found.");
+  if (!pr) {
+    core.warning("The trigger is not a pull request");
     return;
   }
 
