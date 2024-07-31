@@ -15,6 +15,9 @@ inputs:
       PR description template to append when no checkboxes are found in the PR description.
       Leave this field empty to disable the feature.
     required: false
+  default:
+    description: checked by default comma-seperated
+    required: false
 
 outputs:
   checked:
