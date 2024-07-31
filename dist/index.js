@@ -28957,6 +28957,7 @@ function main() {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const token = core.getInput("token", { required: true });
+        const defaultChecked = core.getInput("default", { trimWhitespace: true, required: false });
         const template = core.getMultilineInput("template");
         const octokit = gh.getOctokit(token);
         const context = gh.context;
@@ -28966,7 +28967,7 @@ function main() {
             return;
         }
         let prDescription = (_a = pr.body) !== null && _a !== void 0 ? _a : "";
-        const checked = [];
+        const checked = (defaultChecked !== null && defaultChecked !== void 0 ? defaultChecked : "").split(",").map((item) => item.trim());
         const unchecked = [];
         const lines = prDescription
             .split("\n")

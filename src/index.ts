@@ -8,7 +8,8 @@ try {
 }
 
 async function main() {
-  const token: string = core.getInput("token", { required: true });
+  const token = core.getInput("token", { required: true });
+  const defaultChecked = core.getInput("default", {trimWhitespace: true, required: false})
   const template = core.getMultilineInput("template");
 
   const octokit = gh.getOctokit(token);
@@ -22,7 +23,7 @@ async function main() {
 
   let prDescription = pr.body ?? "";
 
-  const checked: string[] = [];
+  const checked: string[] = (defaultChecked ?? "").split(",").map((item) => item.trim());
   const unchecked: string[] = [];
   const lines = prDescription
     .split("\n")
