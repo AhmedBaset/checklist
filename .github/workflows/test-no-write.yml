@@ -1,0 +1,20 @@
+name: Checklist Detection without template
+
+on:
+  pull_request:
+
+jobs:
+  detect-checklist:
+    runs-on: ubuntu-latest
+    outputs:
+      checked: ${{ steps.checklist.outputs.checked }}
+      unchecked: ${{ steps.checklist.outputs.unchecked }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect Checklist
+        id: checklist
+        uses: AhmedBaset/checklist@3
+        with:
+          token: ${{ github.token }}
