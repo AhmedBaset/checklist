@@ -33,10 +33,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.createComment({
+            const checked = '${{ steps.checklist.outputs.checked }}';
+            const unchecked = '${{ steps.checklist.outputs.unchecked }}';
+
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `**Checklist:**\n\nchecked:\n${steps.checklist.outputs.checked}\nunchecked:\n${steps.checklist.outputs.unchecked}`
-            })
-        
+              body: `**Checklist:**\n\n**Checked:**\n${checked}\n\n**Unchecked:**\n${unchecked}`
+            });
