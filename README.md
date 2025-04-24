@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Checkbox Trigger
         id: detect
-        uses: a7med3bdulbaset/checklist
+        uses: AhmedBaset/checklist@3
         with:
           token: ${{ github.token }}
           # initial PR template to append when no checkboxes are found
