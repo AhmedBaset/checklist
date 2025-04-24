@@ -1,7 +1,7 @@
 lockfileVersion: '9.0'
 
 settings:
-  autoInstallPeers: true
+  autoInstallPeers: false
   excludeLinksFromLockfile: false
 
 importers:
@@ -35,7 +35,7 @@ importers:
         version: 8.56.0
       eslint-plugin-jest:
         specifier: ^27.2.3
-        version: 27.6.1(eslint@8.56.0)(jest@29.7.0)(typescript@5.3.3)
+        version: 27.6.1(eslint@8.56.0)(jest@29.7.0(@types/node@20.10.8))(typescript@5.3.3)
       jest:
         specifier: ^29.6.4
         version: 29.7.0(@types/node@20.10.8)
@@ -47,7 +47,7 @@ importers:
         version: 3.1.1
       ts-jest:
         specifier: ^29.1.1
-        version: 29.1.1(@babel/core@7.23.7)(jest@29.7.0)(typescript@5.3.3)
+        version: 29.1.1(@babel/core@7.23.7)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.23.7))(jest@29.7.0(@types/node@20.10.8))(typescript@5.3.3)
       typescript:
         specifier: ^5.2.2
         version: 5.3.3
@@ -2268,6 +2268,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 6.18.1
       debug: 4.3.4
       eslint: 8.56.0
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -2295,6 +2296,7 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.5.4
       tsutils: 3.21.0(typescript@5.3.3)
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -2309,6 +2311,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.5.4
       ts-api-utils: 1.0.3(typescript@5.3.3)
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -2588,10 +2591,11 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-jest@27.6.1(eslint@8.56.0)(jest@29.7.0)(typescript@5.3.3):
+  eslint-plugin-jest@27.6.1(eslint@8.56.0)(jest@29.7.0(@types/node@20.10.8))(typescript@5.3.3):
     dependencies:
       '@typescript-eslint/utils': 5.62.0(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.56.0
+    optionalDependencies:
       jest: 29.7.0(@types/node@20.10.8)
     transitivePeerDependencies:
       - supports-color
@@ -2949,7 +2953,6 @@ snapshots:
       '@babel/core': 7.23.7
       '@jest/test-sequencer': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.10.8
       babel-jest: 29.7.0(@babel/core@7.23.7)
       chalk: 4.1.2
       ci-info: 3.9.0
@@ -2969,6 +2972,8 @@ snapshots:
       pretty-format: 29.7.0
       slash: 3.0.0
       strip-json-comments: 3.1.1
+    optionalDependencies:
+      '@types/node': 20.10.8
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -3050,7 +3055,7 @@ snapshots:
       jest-util: 29.7.0
 
   jest-pnp-resolver@1.2.3(jest-resolve@29.7.0):
-    dependencies:
+    optionalDependencies:
       jest-resolve: 29.7.0
 
   jest-regex-util@29.6.3: {}
@@ -3504,9 +3509,8 @@ snapshots:
     dependencies:
       typescript: 5.3.3
 
-  ts-jest@29.1.1(@babel/core@7.23.7)(jest@29.7.0)(typescript@5.3.3):
+  ts-jest@29.1.1(@babel/core@7.23.7)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.23.7))(jest@29.7.0(@types/node@20.10.8))(typescript@5.3.3):
     dependencies:
-      '@babel/core': 7.23.7
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
       jest: 29.7.0(@types/node@20.10.8)
@@ -3517,6 +3521,10 @@ snapshots:
       semver: 7.5.4
       typescript: 5.3.3
       yargs-parser: 21.1.1
+    optionalDependencies:
+      '@babel/core': 7.23.7
+      '@jest/types': 29.6.3
+      babel-jest: 29.7.0(@babel/core@7.23.7)
 
   tslib@1.14.1: {}
 

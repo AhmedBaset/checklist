@@ -28974,7 +28974,7 @@ function main() {
             .filter((line) => line.trim().startsWith("- ["));
         if (lines.length === 0) {
             core.warning("No checkboxes found");
-            if (template) {
+            if (template.length > 0) {
                 core.info("Adding template");
                 const newDescription = [
                     prDescription,
