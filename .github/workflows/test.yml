@@ -1,0 +1,42 @@
+name: Checklist Detection
+
+on:
+  pull_request:
+
+jobs:
+  detect-checklist:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    outputs:
+      checked: ${{ steps.checklist.outputs.checked }}
+      unchecked: ${{ steps.checklist.outputs.unchecked }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect Checklist
+        id: checklist
+        uses: AhmedBaset/checklist@3
+        with:
+          token: ${{ github.token }}
+          # Optional: provide a template if you want to add checkboxes when none are found
+          template: |
+            ## CI
+            - [x] format
+            - [x] lint
+            - [x] typecheck
+            - [ ] e2e tests
+
+      - name: Show result in a comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `**Checklist:**\n\nchecked:\n${steps.checklist.outputs.checked}\nunchecked:\n${steps.checklist.outputs.unchecked}`
+            })
+        
