@@ -1,3 +1,5 @@
+<!-- 1 -->
+
 # Checklist Action
 
 GitHub Action to detect checked and unchecked checkboxes in pull request descriptions.
