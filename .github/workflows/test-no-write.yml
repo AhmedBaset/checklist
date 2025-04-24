@@ -1,0 +1,35 @@
+name: Checklist Detection
+
+on:
+  pull_request:
+
+jobs:
+  detect-checklist:
+    runs-on: ubuntu-latest
+    outputs:
+      checked: ${{ steps.checklist.outputs.checked }}
+      unchecked: ${{ steps.checklist.outputs.unchecked }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect Checklist
+        id: checklist
+        uses: AhmedBaset/checklist@3
+        with:
+          token: ${{ github.token }}
+
+      - name: Show result in a comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const checked = '${{ steps.checklist.outputs.checked }}';
+            const unchecked = '${{ steps.checklist.outputs.unchecked }}';
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `**Checklist:**\n\n**Checked:**\n${checked}\n\n**Unchecked:**\n${unchecked}`
+            });
